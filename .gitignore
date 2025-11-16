@@ -42,12 +42,12 @@ js/practice/practice_write_mocked_tests/tests/sol.test.js
 # Java specifics
 java/examinations/.gradle/
 java/examinations/build/
-java/practice/practice_write_mocked_tests/.gradle/
-java/practice/practice_write_run_tests/.gradle/
-java/practice/practice_write_mocked_tests/build/
-java/practice/practice_write_run_tests/build/
-java/examinations/.gradle/
-java/examinations/build/
+java/practice/practice_with_mocked_tests/.gradle
+java/practice/practice_with_run_tests/.gradle
+java/practice/practice_write_mocked_tests/build
+java/practice/practice_write_run_tests/build
+java/examinations/.gradle
+java/examinations/build
 
 
 # IDE specific
