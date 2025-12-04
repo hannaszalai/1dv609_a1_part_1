@@ -40,4 +40,139 @@ public class PasswordTest {
     public void shouldAlwaysPass() throws Exception {
         assertTrue(true);
     }
+
+    // 12 characters (edge case)
+    @Test
+    public void constructorShouldAcceptValidPassword() throws Exception {
+        // PART 1: ARRANGE
+        String validPassword = "Password1234";
+
+        // PART 2: ACT
+        IPassword result = getPassword(validPassword);
+
+        // PART3: ASSERT
+        assertNotNull(result);
+    }
+
+    // 13 characters (edge case)
+    @Test
+    public void constructorShouldAcceptValidPasswords() throws Exception {
+        // PART 1: ARRANGE
+        String validPassword = "Password12345";
+
+        // PART 2: ACT
+        IPassword result = getPassword(validPassword);
+
+        // PART3: ASSERT
+        assertNotNull(result);
+    }
+
+    // 11 characters (edge case)
+    @Test
+    public void constructorShouldThrowExceptionForShortPasswords() throws Exception {
+        // PART 1: ARRANGE
+        String notValidPassword = "Password123";
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            getPassword(notValidPassword);
+        });
+
+        // to check why it throws:
+        assertEquals("To short password", exception.getMessage()); 
+    }
+
+    // 5 characters - too short
+    @Test
+    public void constructorShouldThrowExceptionForShortPassword() throws Exception {
+        // ARRANGE
+        String notValidPassword = "short1";
+        // ACT
+        // ASSERT
+        Exception exception = assertThrows(Exception.class, () -> {
+            getPassword(notValidPassword);
+        });
+
+        // to check why it throws:
+        assertEquals("To short password", exception.getMessage()); 
+    }
+
+    @Test
+    public void constructorShouldThrowExceptionForPasswordWithoutNumber() throws Exception {
+        String notValidPassword = "Shorttttttttt";
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            getPassword(notValidPassword);
+        });
+
+        // to check why it throws:
+        assertEquals("Does not contain a number", exception.getMessage()); 
+    }
+
+    @Test
+    public void constructorShouldThrowExceptionForPasswordWithTrailingSpace() throws Exception {
+        // ARRANGE: Two passwords - one with spaces, one without
+        String passwordNoSpaces = "password1234";
+        String passwordWithSpaces = "  password1234  ";
+
+        // ACT: Create both passwords
+        IPassword p1 = getPassword(passwordNoSpaces);
+        IPassword p2 = getPassword(passwordWithSpaces);
+
+        // ASSERT: They should be the same (because p2 gets trimmed)
+        assertTrue(p1.isPasswordSame(p2));
+    }
+
+    // only numbers
+    @Test
+    public void constructorShouldAcceptValidPasswordForOnlyNumbes() throws Exception {
+        // PART 1: ARRANGE
+        String validPassword = "111111111111";
+
+        // PART 2: ACT
+        IPassword result = getPassword(validPassword);
+
+        // PART3: ASSERT
+        assertNotNull(result);
+    }
+
+    // only numbers
+    @Test
+    public void constructorShouldAcceptValidPasswordForPasswordWithSpecialChars() throws Exception {
+        // PART 1: ARRANGE
+        String validPassword = "pass-word12345!%+";
+
+        // PART 2: ACT
+        IPassword result = getPassword(validPassword);
+
+        // PART3: ASSERT
+        assertNotNull(result);
+    }
+
+    /*
+    ------------BUGS--------------------
+    */
+
+    // Password Comparison - BugIsPasswordSameAlwaysTrue
+    @Test
+    public void isPasswordSame_Should_Return_False_For_Different_Passwords() throws Exception {
+        String password1 = "password1234";
+        String password2 = "password12345";
+
+        IPassword p1 = getPassword(password1);
+        IPassword p2 = getPassword(password2);
+
+        assertFalse(p1.isPasswordSame(p2));
+    }
+
+    // Same Password, Same Hash - BugWrongHashingAlgorithm
+    @Test
+    public void isPasswordSame_Should_Return_True_For_Same_Password() throws Exception {
+        String password1 = "password1234";
+        String password2 = "password1234";
+
+        IPassword p1 = getPassword(password1);
+        IPassword p2 = getPassword(password2);
+
+        assertTrue(p1.isPasswordSame(p2));
+    }
 }
