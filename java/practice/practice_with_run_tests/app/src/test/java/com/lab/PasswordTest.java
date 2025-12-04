@@ -20,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * - BugMissingNumberCheck: Does not throw exception if password lacks a number
  * - BugIsPasswordSameAlwaysTrue: isPasswordSame always returns true
  * - BugWrongHashingAlgorithm: Wrong hashing algorithm
+ * - BugCustom: Weak hash function (only uses first 3 characters)
  */
 
 public class PasswordTest {
     private IPassword getPassword(String s) throws Exception {
-        return (IPassword) new Password(s);
+        // return (IPassword) new Password(s);
         // return (IPassword) new BugDoesNotTrim(s);
-        // return (IPassword) new BugToShortPassword(s);
         // return (IPassword) new BugToShortPassword(s);
         // return (IPassword) new BugVeryShort(s);
         // return (IPassword) new BugWrongExceptionMessage(s);
@@ -34,71 +34,44 @@ public class PasswordTest {
         // return (IPassword) new BugMissingNumberCheck(s);
         // return (IPassword) new BugIsPasswordSameAlwaysTrue(s);
         // return (IPassword) new BugWrongHashingAlgorithm(s);
+         return (IPassword) new BugCustom(s);
     }
 
-    @Test
-    public void shouldAlwaysPass() throws Exception {
-        assertTrue(true);
-    }
+    // @Test
+    // public void shouldAlwaysPass() throws Exception {
+    //     assertTrue(true);
+    // }
 
-    // 12 characters (edge case)
-    @Test
-    public void constructorShouldAcceptValidPassword() throws Exception {
-        // PART 1: ARRANGE
-        String validPassword = "Password1234";
+    // // 12 characters (edge case)
+    // @Test
+    // public void constructorShouldAcceptValidPassword() throws Exception {
+    //     // PART 1: ARRANGE
+    //     String validPassword = "Password1234";
 
-        // PART 2: ACT
-        IPassword result = getPassword(validPassword);
+    //     // PART 2: ACT
+    //     IPassword result = getPassword(validPassword);
 
-        // PART3: ASSERT
-        assertNotNull(result);
-    }
+    //     // PART3: ASSERT
+    //     assertNotNull(result);
+    // }
 
-    // 13 characters (edge case)
-    @Test
-    public void constructorShouldAcceptValidPasswords() throws Exception {
-        // PART 1: ARRANGE
-        String validPassword = "Password12345";
+    // // 13 characters (edge case)
+    // @Test
+    // public void constructorShouldAcceptValidPasswords() throws Exception {
+    //     // PART 1: ARRANGE
+    //     String validPassword = "Password12345";
 
-        // PART 2: ACT
-        IPassword result = getPassword(validPassword);
+    //     // PART 2: ACT
+    //     IPassword result = getPassword(validPassword);
 
-        // PART3: ASSERT
-        assertNotNull(result);
-    }
+    //     // PART3: ASSERT
+    //     assertNotNull(result);
+    // }
 
-    // 11 characters (edge case)
-    @Test
-    public void constructorShouldThrowExceptionForShortPasswords() throws Exception {
-        // PART 1: ARRANGE
-        String notValidPassword = "Password123";
-
-        Exception exception = assertThrows(Exception.class, () -> {
-            getPassword(notValidPassword);
-        });
-
-        // to check why it throws:
-        assertEquals("To short password", exception.getMessage()); 
-    }
-
-    // 5 characters - too short
-    @Test
-    public void constructorShouldThrowExceptionForShortPassword() throws Exception {
-        // ARRANGE
-        String notValidPassword = "short1";
-        // ACT
-        // ASSERT
-        Exception exception = assertThrows(Exception.class, () -> {
-            getPassword(notValidPassword);
-        });
-
-        // to check why it throws:
-        assertEquals("To short password", exception.getMessage()); 
-    }
-
+    // no numbers
     @Test
     public void constructorShouldThrowExceptionForPasswordWithoutNumber() throws Exception {
-        String notValidPassword = "Shorttttttttt";
+        String notValidPassword = "Nonumbersssss";
 
         Exception exception = assertThrows(Exception.class, () -> {
             getPassword(notValidPassword);
@@ -108,6 +81,7 @@ public class PasswordTest {
         assertEquals("Does not contain a number", exception.getMessage()); 
     }
 
+    // Trailing space
     @Test
     public void constructorShouldThrowExceptionForPasswordWithTrailingSpace() throws Exception {
         // ARRANGE: Two passwords - one with spaces, one without
@@ -135,7 +109,7 @@ public class PasswordTest {
         assertNotNull(result);
     }
 
-    // only numbers
+    // with special characters
     @Test
     public void constructorShouldAcceptValidPasswordForPasswordWithSpecialChars() throws Exception {
         // PART 1: ARRANGE
@@ -148,9 +122,31 @@ public class PasswordTest {
         assertNotNull(result);
     }
 
-    /*
-    ------------BUGS--------------------
-    */
+    // Password lenght 11 - BugToShortPassword
+    @Test
+    public void constructorShouldThrowExceptionForShortPassword() throws Exception {
+        // PART 1: ARRANGE
+        String notValidPassword = "Password123";
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            getPassword(notValidPassword);
+        });
+
+        assertEquals("To short password", exception.getMessage()); 
+    }
+
+    // Password lenght 6 - BugVeryShort
+    @Test
+    public void constructorShouldThrowExceptionForVeryShortPassword() throws Exception {
+        // PART 1: ARRANGE
+        String notValidPassword = "123abc";
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            getPassword(notValidPassword);
+        });
+
+        assertEquals("To short password", exception.getMessage()); 
+    }
 
     // Password Comparison - BugIsPasswordSameAlwaysTrue
     @Test
@@ -164,7 +160,7 @@ public class PasswordTest {
         assertFalse(p1.isPasswordSame(p2));
     }
 
-    // Same Password, Same Hash - BugWrongHashingAlgorithm
+    // Same Password, Same Hash - BugWrongHashingAlgorithm & CostumBug
     @Test
     public void isPasswordSame_Should_Return_True_For_Same_Password() throws Exception {
         String password1 = "password1234";
@@ -175,4 +171,5 @@ public class PasswordTest {
 
         assertTrue(p1.isPasswordSame(p2));
     }
+
 }

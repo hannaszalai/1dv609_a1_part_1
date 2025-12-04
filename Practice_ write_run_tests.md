@@ -62,3 +62,14 @@ Create a table like this one for all the bugs and Tests, showing which test fail
 
 
 
+| Test Name | Correct | DoesNotTrim | ToShort | VeryShort | WrongExceptionMessage | MissingPasswordLengthCheck | MissingNumberCheck | IsPasswordSameAlwaysTrue | WrongHashingAlgorithm | BugCustom |
+|-----------|---------|-------------|---------|-----------|----------------------|---------------------------|-------------------|------------------------|----------------------|----------------------|
+| constructorShouldThrowExceptionForPasswordWithoutNumber | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |✅ |
+| constructorShouldThrowExceptionForPasswordWithTrailingSpace | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |✅ |
+| constructorShouldAcceptValidPasswordForOnlyNumbes | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |✅ |
+| constructorShouldAcceptValidPasswordForPasswordWithSpecialChars | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |✅ |
+| constructorShouldThrowExceptionForShortPassword | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ |✅ |
+| constructorShouldThrowExceptionForVeryShortPassword | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ |✅ |
+| isPasswordSame_Should_Return_False_For_Different_Passwords | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |❌ |
+| isPasswordSame_Should_Return_True_For_Same_Password | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |✅ |
+| **Coverage** | **100%** | **100%** | **100%** | **90%** | **100%** | **100%** | **100%** | **100%** | **95%** |**98%** |
