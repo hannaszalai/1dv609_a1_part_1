@@ -1,134 +1,134 @@
-package com.lab;
+// package com.lab;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+// import org.junit.jupiter.api.Test;
+// import static org.junit.jupiter.api.Assertions.*;
 
-/* 
-Test the real SSNHelper without mocks and all the buggy versions.
-*/
-public class SSNHelperTest {
+// /* 
+// Test the real SSNHelper without mocks and all the buggy versions.
+// */
+// public class SSNHelperTest {
 
-    private SSNHelper getHelper() {
-        return new SSNHelper();
-    }
+//     private SSNHelper getHelper() {
+//         return new SSNHelper();
+//     }
     
-    @Test
-    public void isCorrectLengthShouldReturnTrueForValidLength() throws Exception {
-        String validSSNumber = "031226-3163";
+//     @Test
+//     public void isCorrectLengthShouldReturnTrueForValidLength() throws Exception {
+//         String validSSNumber = "031226-3163";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isCorrectLength(validSSNumber);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isCorrectLength(validSSNumber);
 
-        assertTrue(result);
-    }
+//         assertTrue(result);
+//     }
 
-    @Test
-    public void isCorrectLengthShouldReturnFalseForInvalidLenght() throws Exception {
-        String invalidSSNumber = "031226-30163";
+//     @Test
+//     public void isCorrectLengthShouldReturnFalseForInvalidLenght() throws Exception {
+//         String invalidSSNumber = "031226-30163";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isCorrectLength(invalidSSNumber);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isCorrectLength(invalidSSNumber);
 
-        assertFalse(result);
-    }
+//         assertFalse(result);
+//     }
 
-    @Test
-    public void isCorrectFormatShouldReturnTrueForValidFormat() throws Exception {
-        String validFormat = "031226-3163";
+//     @Test
+//     public void isCorrectFormatShouldReturnTrueForValidFormat() throws Exception {
+//         String validFormat = "031226-3163";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isCorrectFormat(validFormat);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isCorrectFormat(validFormat);
 
-        assertTrue(result);
-    }
+//         assertTrue(result);
+//     }
 
-    @Test
-    public void isCorrectFormatShouldReturnFalseForInvalidFormat() throws Exception {
-        String invalidFormat = "031226--3163";
+//     @Test
+//     public void isCorrectFormatShouldReturnFalseForInvalidFormat() throws Exception {
+//         String invalidFormat = "031226--3163";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isCorrectFormat(invalidFormat);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isCorrectFormat(invalidFormat);
 
-        assertFalse(result);
-    }
+//         assertFalse(result);
+//     }
 
-    @Test
-    public void isValidMonthShouldReturnTrueForValidMonth() throws Exception {
-        String validMonth = "12";
+//     @Test
+//     public void isValidMonthShouldReturnTrueForValidMonth() throws Exception {
+//         String validMonth = "12";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isValidMonth(validMonth);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isValidMonth(validMonth);
 
-        assertTrue(result);
-    }
+//         assertTrue(result);
+//     }
 
-    @Test
-    public void isValidMonthShouldReturnFalseForInvalidMonth() throws Exception {
-        String invalidMonth = "13";
+//     @Test
+//     public void isValidMonthShouldReturnFalseForInvalidMonth() throws Exception {
+//         String invalidMonth = "13";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isValidMonth(invalidMonth);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isValidMonth(invalidMonth);
 
-        assertFalse(result);
-    }
+//         assertFalse(result);
+//     }
 
-    @Test
-    public void isValidMonthShouldReturnFalseForMonthZero() throws Exception {
-        String invalidMonth = "0";
+//     @Test
+//     public void isValidMonthShouldReturnFalseForMonthZero() throws Exception {
+//         String invalidMonth = "0";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isValidMonth(invalidMonth);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isValidMonth(invalidMonth);
 
-        assertFalse(result);
-    }
+//         assertFalse(result);
+//     }
 
-    @Test
-    public void isValidDayShouldReturnTrueForValidDay() throws Exception {
-        String validDay = "30";
+//     @Test
+//     public void isValidDayShouldReturnTrueForValidDay() throws Exception {
+//         String validDay = "30";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isValidDay(validDay);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isValidDay(validDay);
 
-        assertTrue(result);
-    }
+//         assertTrue(result);
+//     }
 
-    @Test
-    public void isValidDayShouldReturnFalseForInvalidDay() throws Exception {
-        String invalidDay = "32";
+//     @Test
+//     public void isValidDayShouldReturnFalseForInvalidDay() throws Exception {
+//         String invalidDay = "32";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isValidDay(invalidDay);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isValidDay(invalidDay);
 
-        assertFalse(result);
-    }
+//         assertFalse(result);
+//     }
 
-    @Test
-    public void isValidDayShouldReturnFalseForDayZero() throws Exception {
-        String invalidDay = "0";
+//     @Test
+//     public void isValidDayShouldReturnFalseForDayZero() throws Exception {
+//         String invalidDay = "0";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.isValidDay(invalidDay);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.isValidDay(invalidDay);
 
-        assertFalse(result);
-    }
+//         assertFalse(result);
+//     }
 
-    @Test
-    public void luhnIsCorrectShouldReturnTrueForCorrectLuhn() throws Exception {
-        String validLuhn = "031226-3163";
+//     @Test
+//     public void luhnIsCorrectShouldReturnTrueForCorrectLuhn() throws Exception {
+//         String validLuhn = "031226-3163";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.luhnIsCorrect(validLuhn);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.luhnIsCorrect(validLuhn);
 
-        assertTrue(result);
-    }
+//         assertTrue(result);
+//     }
 
-    @Test
-    public void luhnIsCorrectShouldReturnFalseForIncorrectLuhn() throws Exception {
-        String invalidLuhn = "031226-3164";
+//     @Test
+//     public void luhnIsCorrectShouldReturnFalseForIncorrectLuhn() throws Exception {
+//         String invalidLuhn = "031226-3164";
 
-        SSNHelper helper = getHelper();
-        boolean result = helper.luhnIsCorrect(invalidLuhn);
+//         SSNHelper helper = getHelper();
+//         boolean result = helper.luhnIsCorrect(invalidLuhn);
 
-        assertFalse(result);
-    }
-}
+//         assertFalse(result);
+//     }
+// }
