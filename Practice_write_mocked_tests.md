@@ -54,8 +54,8 @@ A bug in the SwedishSecurityNumber must not fail due to a bug in SSNHelper.
 |-----|------|---------|-------------|-----------------|----------------------|-------------|----------------|-----------|
 | SSNHelper | isCorrectLengthShouldReturnTrueForValidLength | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isCorrectLengthShouldReturnFalseForInvalidLength | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SSNHelper | isCorrectFormatShouldReturnTrueForValidFormat | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
-| SSNHelper | isCorrectFormatShouldReturnFalseForInvalidFormat | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+| SSNHelper | isCorrectFormatShouldReturnTrueForValidFormat | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| SSNHelper | isCorrectFormatShouldReturnFalseForInvalidFormat | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidMonthShouldReturnTrueForValidMonth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidMonthShouldReturnFalseForInvalidMonth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidMonthShouldReturnFalseForMonthZero | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
@@ -63,7 +63,7 @@ A bug in the SwedishSecurityNumber must not fail due to a bug in SSNHelper.
 | SSNHelper | isValidDayShouldReturnFalseForInvalidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | SSNHelper | isValidDayShouldReturnFalseForDayZero | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | luhnIsCorrectShouldReturnTrueForCorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| SSNHelper | luhnIsCorrectShouldReturnFalseForIncorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| SSNHelper | luhnIsCorrectShouldReturnFalseForIncorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Coverage | | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
 
 

@@ -4,21 +4,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /* 
-Test the real SSNHelper without mocks.
+Test the real SSNHelper without mocks and all the buggy versions.
 */
 public class SSNHelperTest {
 
     private SSNHelper getHelper() {
         return new SSNHelper();
-        // return new BuggySSNHelperAllowDayUpTo30();
-        // return new BuggySSNHelperAllowMonth0();
-        // return new BuggySSNHelperIncorrectFormat();
-        // return new BuggySSNHelperMessyLuhn();
-        // return new BuggySSNHelperWrongLength();
     }
     
     @Test
-    public void isCorrectLengthShouldReturnTrueForValidLenght() throws Exception {
+    public void isCorrectLengthShouldReturnTrueForValidLength() throws Exception {
         String validSSNumber = "031226-3163";
 
         SSNHelper helper = getHelper();
