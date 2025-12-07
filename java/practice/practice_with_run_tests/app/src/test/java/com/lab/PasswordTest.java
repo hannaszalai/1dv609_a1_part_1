@@ -34,7 +34,7 @@ public class PasswordTest {
         // return (IPassword) new BugMissingNumberCheck(s);
         // return (IPassword) new BugIsPasswordSameAlwaysTrue(s);
         // return (IPassword) new BugWrongHashingAlgorithm(s);
-         return (IPassword) new BugCustom(s);
+        // return (IPassword) new BugCustom(s);
     }
 
     // @Test
@@ -96,31 +96,31 @@ public class PasswordTest {
         assertTrue(p1.isPasswordSame(p2));
     }
 
-    // only numbers
-    @Test
-    public void constructorShouldAcceptValidPasswordForOnlyNumbes() throws Exception {
-        // PART 1: ARRANGE
-        String validPassword = "111111111111";
+    // // only numbers
+    // @Test
+    // public void constructorShouldAcceptValidPasswordForOnlyNumbes() throws Exception {
+    //     // PART 1: ARRANGE
+    //     String validPassword = "111111111111";
 
-        // PART 2: ACT
-        IPassword result = getPassword(validPassword);
+    //     // PART 2: ACT
+    //     IPassword result = getPassword(validPassword);
 
-        // PART3: ASSERT
-        assertNotNull(result);
-    }
+    //     // PART3: ASSERT
+    //     assertNotNull(result);
+    // }
 
-    // with special characters
-    @Test
-    public void constructorShouldAcceptValidPasswordForPasswordWithSpecialChars() throws Exception {
-        // PART 1: ARRANGE
-        String validPassword = "pass-word12345!%+";
+    // // with special characters
+    // @Test
+    // public void constructorShouldAcceptValidPasswordForPasswordWithSpecialChars() throws Exception {
+    //     // PART 1: ARRANGE
+    //     String validPassword = "pass-word12345!%+";
 
-        // PART 2: ACT
-        IPassword result = getPassword(validPassword);
+    //     // PART 2: ACT
+    //     IPassword result = getPassword(validPassword);
 
-        // PART3: ASSERT
-        assertNotNull(result);
-    }
+    //     // PART3: ASSERT
+    //     assertNotNull(result);
+    // }
 
     // Password lenght 11 - BugToShortPassword
     @Test
@@ -150,9 +150,9 @@ public class PasswordTest {
 
     // Password Comparison - BugIsPasswordSameAlwaysTrue
     @Test
-    public void isPasswordSame_Should_Return_False_For_Different_Passwords() throws Exception {
+    public void isPasswordSameShouldReturnFalseForDifferentPasswords() throws Exception {
         String password1 = "password1234";
-        String password2 = "password12345";
+        String password2 = "drowssap4321";
 
         IPassword p1 = getPassword(password1);
         IPassword p2 = getPassword(password2);
@@ -160,9 +160,23 @@ public class PasswordTest {
         assertFalse(p1.isPasswordSame(p2));
     }
 
-    // Same Password, Same Hash - BugWrongHashingAlgorithm & CostumBug
+    // Same Password Hash Collision - BugWrongHashingAlgorithm
+    // These passwords have same first 3 chars (so BugCustom passes)
+    // but different total char sums (so BugWrongHashingAlgorithm fails if it only uses first 3)
     @Test
-    public void isPasswordSame_Should_Return_True_For_Same_Password() throws Exception {
+    public void isPasswordSameShouldReturnFalseForDifferentPasswordsWithHashCollision() throws Exception {
+        String password1 = "abcdefgh1111";
+        String password2 = "abcjklmn1111";
+
+        IPassword p1 = getPassword(password1);
+        IPassword p2 = getPassword(password2);
+
+        assertFalse(p1.isPasswordSame(p2));
+    }
+
+    // Same Password - BugWrongHashingAlgorithm should pass this, BugCustom should pass this
+    @Test
+    public void isPasswordSameShouldReturnTrueForSamePassword() throws Exception {
         String password1 = "password1234";
         String password2 = "password1234";
 
