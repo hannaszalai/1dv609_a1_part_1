@@ -123,4 +123,18 @@ public class SwedishSocialSecurityNumberTest {
         
         assertEquals("90", ssn.getYear());
     }
+
+    // Additional test - should return full SSN string
+    @Test
+    public void shouldReturnFullSSN() throws Exception {
+        when(helper.isCorrectLength("900101-0017")).thenReturn(true);
+        when(helper.isCorrectFormat("900101-0017")).thenReturn(true);
+        when(helper.isValidMonth("01")).thenReturn(true);
+        when(helper.isValidDay("01")).thenReturn(true);
+        when(helper.luhnIsCorrect("900101-0017")).thenReturn(true);
+
+        SwedishSocialSecurityNumber ssn = new SwedishSocialSecurityNumber("900101-0017", helper);
+        
+        assertEquals("900101-0017", ssn.getSSN());
+    }
 }

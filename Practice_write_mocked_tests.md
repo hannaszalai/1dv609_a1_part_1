@@ -66,17 +66,18 @@ A bug in the SwedishSecurityNumber must not fail due to a bug in SSNHelper.
 | SSNHelper | luhnIsCorrectShouldReturnFalseForIncorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Coverage | | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
 
-| SUT | Test | Correct | NoLenCheck | NoLuhn | NoTrim | WrongYear |
-|-----|------|---------|------------|--------|--------|-----------|
-| SwedishSocialSecurityNumber | shouldAcceptValidSSN | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldThrowExceptionWhenLengthValidationFails | ✅ | ❌ | ✅ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldThrowExceptionWhenFormatValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldThrowExceptionWhenMonthValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldThrowExceptionWhenDayValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldThrowExceptionWhenLuhnValidationFails | ✅ | ✅ | ❌ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldTrimInputBeforeValidation | ✅ | ✅ | ✅ | ❌ | ✅ |
-| SwedishSocialSecurityNumber | shouldReturnCorrectYear | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Coverage | | 100% | 100% | 100% | 100% | 100% |
+| SUT | Test | Correct | NoLenCheck | NoLuhn | NoTrim | WrongYear | WrongSSN |
+|-----|------|---------|------------|--------|--------|-----------|----------|
+| SwedishSocialSecurityNumber | shouldAcceptValidSSN | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldThrowExceptionWhenLengthValidationFails | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldThrowExceptionWhenFormatValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldThrowExceptionWhenMonthValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldThrowExceptionWhenDayValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldThrowExceptionWhenLuhnValidationFails | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldTrimInputBeforeValidation | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldReturnCorrectYear | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| SwedishSocialSecurityNumber | shouldReturnFullSSN | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Coverage | | 100% | 100% | 100% | 100% | 100% | 100% |
 
 
 
