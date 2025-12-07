@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
+ * COULD BE DELETED
  * Example tests demonstrating how to use mocks with the SSN classes.
  * 
  * To use Mockito, add to build.gradle:

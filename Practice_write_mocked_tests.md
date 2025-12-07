@@ -48,8 +48,23 @@ A bug in the SwedishSecurityNumber must not fail due to a bug in SSNHelper.
 | --- | ---| --- | --- | --- | --- | --- |
 | SwedishSecurityNumber | Test name 1 | ✅ |  |  |  | | 
 | SwedishSecurityNumber | Test name 2 | ✅ |  |  |  | | 
-| SSNHelper  | Test name 3 |  | ✅ | ❌ |  | | |
-| Coverage |  | 100% | 100% | 100% | | |
+
+
+| SUT | Test | Correct | WrongLength | IncorrectFormat | IncorrectFormatFalse | AllowMonth0 | AllowDayUpTo30 | MessyLuhn |
+|-----|------|---------|-------------|-----------------|----------------------|-------------|----------------|-----------|
+| SSNHelper | isCorrectLengthShouldReturnTrueForValidLength | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isCorrectLengthShouldReturnFalseForInvalidLength | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isCorrectFormatShouldReturnTrueForValidFormat | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isCorrectFormatShouldReturnFalseForInvalidFormat | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+| SSNHelper | isValidMonthShouldReturnTrueForValidMonth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isValidMonthShouldReturnFalseForInvalidMonth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isValidMonthShouldReturnFalseForMonthZero | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| SSNHelper | isValidDayShouldReturnTrueForValidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isValidDayShouldReturnFalseForInvalidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| SSNHelper | isValidDayShouldReturnFalseForDayZero | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | luhnIsCorrectShouldReturnTrueForCorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| SSNHelper | luhnIsCorrectShouldReturnFalseForIncorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Coverage | | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
 
 
 

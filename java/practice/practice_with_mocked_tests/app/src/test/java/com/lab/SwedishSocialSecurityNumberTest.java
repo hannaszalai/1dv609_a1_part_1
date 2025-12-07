@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+change it to use mocks instead of real SSNHelper (modify what exists)
+ */
+
 public class SwedishSocialSecurityNumberTest {
     
     private SSNHelper helper;
