@@ -53,31 +53,31 @@ A bug in the SwedishSecurityNumber must not fail due to a bug in SSNHelper.
 | SUT | Test | Correct | WrongLength | IncorrectFormat | IncorrectFormatFalse | AllowMonth0 | AllowDayUpTo30 | MessyLuhn |
 |-----|------|---------|-------------|-----------------|----------------------|-------------|----------------|-----------|
 | SSNHelper | isCorrectLengthShouldReturnTrueForValidLength | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SSNHelper | isCorrectLengthShouldReturnFalseForInvalidLength | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SSNHelper | isCorrectLengthShouldReturnFalseForInvalidLength | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | SSNHelper | isCorrectFormatShouldReturnTrueForValidFormat | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
 | SSNHelper | isCorrectFormatShouldReturnFalseForInvalidFormat | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidMonthShouldReturnTrueForValidMonth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidMonthShouldReturnFalseForInvalidMonth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidMonthShouldReturnFalseForMonthZero | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
-| SSNHelper | isValidDayShouldReturnTrueForValidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| SSNHelper | isValidDayShouldReturnFalseForInvalidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| SSNHelper | isValidDayShouldReturnTrueForValidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| SSNHelper | isValidDayShouldReturnFalseForInvalidDay | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | isValidDayShouldReturnFalseForDayZero | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SSNHelper | luhnIsCorrectShouldReturnTrueForCorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | SSNHelper | luhnIsCorrectShouldReturnFalseForIncorrectLuhn | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Coverage | | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
+| Coverage | | 100% | 98% | 100% | 100% | 98% | 97% | 97% |
 
 | SUT | Test | Correct | NoLenCheck | NoLuhn | NoTrim | WrongYear | WrongSSN |
 |-----|------|---------|------------|--------|--------|-----------|----------|
-| SwedishSocialSecurityNumber | shouldAcceptValidSSN | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldAcceptValidSSN | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | SwedishSocialSecurityNumber | shouldThrowExceptionWhenLengthValidationFails | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
 | SwedishSocialSecurityNumber | shouldThrowExceptionWhenFormatValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SwedishSocialSecurityNumber | shouldThrowExceptionWhenMonthValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SwedishSocialSecurityNumber | shouldThrowExceptionWhenDayValidationFails | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | SwedishSocialSecurityNumber | shouldThrowExceptionWhenLuhnValidationFails | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
-| SwedishSocialSecurityNumber | shouldTrimInputBeforeValidation | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| SwedishSocialSecurityNumber | shouldTrimInputBeforeValidation | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | SwedishSocialSecurityNumber | shouldReturnCorrectYear | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | SwedishSocialSecurityNumber | shouldReturnFullSSN | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Coverage | | 100% | 100% | 100% | 100% | 100% | 100% |
+| Coverage | | 100% | 100% | 100% | 100% | 93% | 100% |
 
 
 
