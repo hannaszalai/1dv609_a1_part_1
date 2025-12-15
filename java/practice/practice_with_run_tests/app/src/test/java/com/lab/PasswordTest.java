@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * - BugIsPasswordSameAlwaysTrue: isPasswordSame always returns true
  * - BugWrongHashingAlgorithm: Wrong hashing algorithm
  * - BugCustom: Weak hash function (only uses first 3 characters)
+ * - BugPassesAllTests: Only hashes even-indexed characters (passes all 7 tests!)
  */
 
 public class PasswordTest {
@@ -35,6 +36,7 @@ public class PasswordTest {
         // return (IPassword) new BugIsPasswordSameAlwaysTrue(s);
         // return (IPassword) new BugWrongHashingAlgorithm(s);
         // return (IPassword) new BugCustom(s);
+        // return (IPassword) new BugPassesAllTests(s);
     }
 
     // @Test
